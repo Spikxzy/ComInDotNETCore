@@ -1,0 +1,78 @@
+[
+	uuid(68FE1AA9-B7F7-4F00-9D2E-136EE2514CC7),
+	version(1.0),
+	helpstring("LessSimpleComObjectTLB")
+]
+library LessSimpleComObjectTLB
+{
+	importlib("STDOLE2.TLB");
+
+	// Forward declare all types defined in this typelib
+	interface ILessSimpleComObject;
+	interface IResult;
+
+	[
+		odl,
+		uuid(98BF9D9A-14B1-49E6-A7E3-E2064EE6BDE9),
+		dual,
+		oleautomation,
+		nonextensible,
+		helpstring("ILessSimpleComObject"),
+		object
+	]
+	interface ILessSimpleComObject : IDispatch
+	{
+		[
+			id(1),
+			helpstring("Addition")
+		]
+		HRESULT Addition(
+			[in] double firstValue,
+			[in] double secondValue,
+			[out, retval] IResult** ReturnVal);
+
+		[
+			id(2),
+			helpstring("HelloWorld")
+		]
+		HRESULT HelloWorld(
+			[out, retval] BSTR* ReturnVal);
+	};
+
+	[
+		uuid(DE468003-94B8-495E-8FDC-FAC4A86AA11C),
+		helpstring("LessSimpleComObject")
+	]
+	coclass LessSimpleComObject
+	{
+		[default] interface ILessSimpleComObject;
+	};
+
+	[
+		odl,
+		uuid(B4A48873-67CE-4F6A-840B-540301C561B7),
+		dual,
+		oleautomation,
+		nonextensible,
+		helpstring("IResult"),
+		object
+	]
+	interface IResult : IDispatch
+	{
+		[
+			id(1),
+			helpstring("ReturnResult")
+		]
+		HRESULT ReturnResult(
+			[out, retval] double* ReturnVal);
+	};
+
+	[
+		uuid(EE4EAE34-E2CC-46AF-B6F6-FF4B79513324),
+		helpstring("Result")
+	]
+	coclass Result
+	{
+		[default] interface IResult;
+	};
+}

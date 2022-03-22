@@ -1,0 +1,46 @@
+﻿[
+	uuid(6CAE0A24-8102-4070-A049-7AF0546E1419),
+	version(1.0),
+	helpstring("SimpleComObjectTLB")
+]
+library SimpleComObjectTLB
+{
+	importlib("STDOLE2.TLB");
+
+	[
+		odl,
+		uuid(79FA01D0-D8A6-4A5F-93AA-0C194109D08F),
+		dual,
+		oleautomation,
+		nonextensible,
+		helpstring("ISimpleComObject"),
+		object
+	]
+	interface ISimpleComObject : IDispatch
+	{
+		[
+			id(1),
+			helpstring("Addition")
+		]
+		HRESULT Addition(
+			[in] double firstValue,
+			[in] double secondValue,
+			[out, retval] double* ReturnVal);
+
+		[
+			id(2),
+			helpstring("HelloWorld")
+		]
+		HRESULT HelloWorld(
+			[out, retval] BSTR* ReturnVal);
+	};
+
+	[
+		uuid(12882A6C-7176-47BF-8F39-7C029B9350A2),
+		helpstring("SimpleComObject")
+	]
+	coclass SimpleComObject
+	{
+		[default] interface ISimpleComObject;
+	};
+}

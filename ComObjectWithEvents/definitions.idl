@@ -1,0 +1,28 @@
+﻿[uuid(3D37CAC5-1A40-4E19-BDCD-C0020DB78EF7), version(1.0), helpstring("ComWithEventsTLB")]
+library ComWithEventsTLB
+{
+	importlib("STDOLE2.TLB");
+
+	[odl, uuid(26673784-89E0-4215-9B1A-0CB078AC4E8B), dual, oleautomation, nonextensible, helpstring("IComObject"), object]
+	interface IComObject : IDispatch
+	{
+		[id(1), helpstring("Addition")]
+		HRESULT Addition([in] double firstValue, [in] double secondValue, [out, retval] double* returnVal);
+	};
+
+	[uuid(51249E63-A9E2-4713-8EFA-CA8F9C6BFBB7), helpstring("ComEvents")]
+	dispinterface ComEvents
+	{
+		properties:
+		methods:
+			[id(1), helpstring("OnAdditionDone")]
+			void OnAdditionDone();
+	};
+
+	[uuid(01B19BC2-010D-4B97-9789-17EE1083CE5F), helpstring("ComObject")]
+	coclass ComObject
+	{
+		[default] interface IComObject;
+		[default, source] dispinterface ComEvents;
+	};
+}
