@@ -1,0 +1,46 @@
+﻿[
+	uuid(549DA0D4-B6A0-4398-BD2C-C6717E2C1460),
+	version(1.0),
+	helpstring("TLBComObjectTLB")
+]
+library TLBComObjectTLB
+{
+	importlib("STDOLE2.TLB");
+
+	[
+		odl,
+		uuid(1418A751-1102-48DA-B96A-C3289CECDBC7),
+		dual,
+		oleautomation,
+		nonextensible,
+		helpstring("ITLBComObject"),
+		object
+	]
+	interface ITLBComObject : IDispatch
+	{
+		[
+			id(1),
+			helpstring("Addition")
+		]
+		HRESULT Addition(
+			[in] double firstValue,
+			[in] double secondValue,
+			[out, retval] double* ReturnVal);
+
+		[
+			id(2),
+			helpstring("HelloWorld")
+		]
+		HRESULT HelloWorld(
+			[out, retval] BSTR* ReturnVal);
+	};
+
+	[
+		uuid(1EF51909-8DC7-4ADD-ADC0-12AC469F2F33),
+		helpstring("TLBComObject")
+	]
+	coclass TLBComObject
+	{
+		[default] interface ITLBComObject;
+	};
+}
