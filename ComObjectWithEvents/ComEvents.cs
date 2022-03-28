@@ -1,15 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Runtime.InteropServices;
-
-namespace ComObjectWithEvents
+﻿namespace ComObjectWithEvents
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Runtime.InteropServices;
+    using System.Text;
+    using System.Threading.Tasks;
+
     [ComVisible(true)]
     [Guid(AssemblyInfo.ComEventsGuid)]
-    [InterfaceType(ComInterfaceType.InterfaceIsDual)]
+    [InterfaceType(ComInterfaceType.InterfaceIsIDispatch)]
     public interface ComEvents
     {
         [DispId(1)]
