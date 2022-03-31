@@ -1,0 +1,42 @@
+﻿[uuid(E8F39E50-BE33-4864-B54A-2E096137D080), version(1.0), helpstring("MyComObjectTLB")]
+library MyComObjectTLB
+{
+	importlib("STDOLE2.TLB");
+
+
+	[odl, uuid(454A76D0-4597-45D8-8420-671F71D50C3B), dual, oleautomation, nonextensible, helpstring("IMyResult"), object]
+	interface IMyResult : IDispatch
+	{
+		[id(1), helpstring("ReturnResult")]
+		HRESULT ReturnResult([out, retval] double* returnVal);
+	};
+
+	[uuid(C49DA0C5-727E-43F5-8359-490994D2BA23), helpstring("MyResult")]
+	coclass MyResult
+	{
+		[default] interface IMyResult;
+	};
+
+	[uuid(E6FF9DB8-4C0D-457E-8066-C5D6C6E58692), helpstring("IMyComEvents")]
+	dispinterface IMyComEvents
+	{
+		properties:
+		methods:
+			[id(1), helpstring("OnAdditionDone")]
+			void OnAdditionDone();
+	};
+
+	[odl, uuid(C83FF168-1899-468A-BE0E-2BC4E5394AB4), dual, oleautomation, nonextensible, helpstring("IMyComObject"), object]
+	interface IMyComObject : IDispatch
+	{
+		[id(1), helpstring("Addition")]
+		HRESULT Addition([in] double firstValue, [in] double secondValue, [out, retval] IMyResult** returnVal);
+	};
+
+	[uuid(6222489B-F4C0-4BA6-9A30-90172B9BB648), helpstring("MyComObject")]
+	coclass MyComObject
+	{
+		[default] interface IMyComObject;
+		[default, source] dispinterface IMyComEvents;
+	};
+}
