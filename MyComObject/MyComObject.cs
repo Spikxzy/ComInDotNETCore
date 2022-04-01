@@ -25,31 +25,8 @@
                 }
             }
 
-            using (RegistryKey key = Registry.ClassesRoot.CreateSubKey(@"CLSID\{" + AssemblyInfo.MyResultGuid + @"}"))
-            {
-                using (RegistryKey typeLib = key.CreateSubKey(@"TypeLib"))
-                {
-                    typeLib.SetValue(string.Empty, "{" + AssemblyInfo.LibraryGuid + "}", RegistryValueKind.String);
-                }
-            }
-
             // Interface entries
             using (RegistryKey key = Registry.ClassesRoot.CreateSubKey(@"Interface\{" + AssemblyInfo.IMyComObjectGuid + @"}"))
-            {
-                using (RegistryKey typeLib = key.CreateSubKey(@"ProxyStubClsid32"))
-                {
-                    typeLib.SetValue(string.Empty, "{00020424-0000-0000-C000-000000000046}", RegistryValueKind.String);
-                }
-
-                using (RegistryKey typeLib = key.CreateSubKey(@"TypeLib"))
-                {
-                    typeLib.SetValue(string.Empty, "{" + AssemblyInfo.LibraryGuid + "}", RegistryValueKind.String);
-                    Version version = typeof(AssemblyInfo).Assembly.GetName().Version;
-                    typeLib.SetValue("Version", string.Format("{0}.{1}", version.Major, version.Minor), RegistryValueKind.String);
-                }
-            }
-
-            using (RegistryKey key = Registry.ClassesRoot.CreateSubKey(@"Interface\{" + AssemblyInfo.IMyResultGuid + @"}"))
             {
                 using (RegistryKey typeLib = key.CreateSubKey(@"ProxyStubClsid32"))
                 {
@@ -96,8 +73,6 @@
         public static void DllUnregisterServer(Type t)
         {
             Registry.ClassesRoot.DeleteSubKeyTree(@"CLSID\{" + AssemblyInfo.MyComObjectGuid + @"}", false);
-            Registry.ClassesRoot.DeleteSubKeyTree(@"Interface\{" + AssemblyInfo.IMyComObjectGuid + @"}", false);
-            Registry.ClassesRoot.DeleteSubKeyTree(@"CLSID\{" + AssemblyInfo.MyResultGuid + @"}", false);
             Registry.ClassesRoot.DeleteSubKeyTree(@"Interface\{" + AssemblyInfo.IMyResultGuid + @"}", false);
             Registry.ClassesRoot.DeleteSubKeyTree(@"TypeLib\{" + AssemblyInfo.LibraryGuid + @"}", false);
         }
