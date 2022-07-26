@@ -82,6 +82,18 @@
 
         public event OnAdditionDoneDelegate OnAdditionDone;
 
+        public double Result;
+
+        static MyComObject()
+        {
+            MyResult.SetResult();
+        }
+
+        public MyComObject()
+        {
+            MyResult.SetResult();
+        }
+
         public IMyResult Addition(double value1, double value2)
         {
             var ev = OnAdditionDone;
@@ -91,6 +103,17 @@
             }
 
             return new MyResult(value1, value2);
+        }
+
+        public IMyResult[] FancyAddition(double value1, double value2)
+        {
+            var ev = OnAdditionDone;
+            if (ev != null)
+            {
+                ev();
+            }
+
+            return new MyResult[] { new MyResult(value1, value2), new MyResult(value2, value1) };
         }
     }
 }

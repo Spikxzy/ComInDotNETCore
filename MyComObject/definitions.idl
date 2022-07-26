@@ -3,6 +3,17 @@ library MyComObjectTLB
 {
 	importlib("STDOLE2.TLB");
 
+	typedef
+		[
+			uuid(A28167C4-9E73-47E0-A934-43255D4AACA5),
+			version (1.0)
+		]
+	enum SomeEnumeration {
+		SomeEnumeration_zero = 0,
+		SomeEnumeration_one = 1,
+		SomeEnumeration_two = 2,
+		SomeEnumeration_three = 3
+	} SomeEnumeration;
 
 	[odl, uuid(454A76D0-4597-45D8-8420-671F71D50C3B), dual, oleautomation, nonextensible, helpstring("IMyResult"), object]
 	interface IMyResult : IDispatch
@@ -31,6 +42,9 @@ library MyComObjectTLB
 	{
 		[id(1), helpstring("Addition")]
 		HRESULT Addition([in] double firstValue, [in] double secondValue, [out, retval] IMyResult** returnVal);
+
+		[id(2), helpstring("FancyAddition")]
+		HRESULT FancyAddition([in] double firstValue, [in] double secondValue, [out, retval] SAFEARRAY(IMyResult*)* returnVal);
 	};
 
 	[uuid(6222489B-F4C0-4BA6-9A30-90172B9BB648), helpstring("MyComObject")]

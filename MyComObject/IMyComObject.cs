@@ -9,5 +9,8 @@
     {
         [DispId(1)]
         IMyResult Addition(double value1, double value2);
+
+        [DispId(2)]
+        IMyResult[] FancyAddition(double value1, double value2);
     }
 }

@@ -6,7 +6,7 @@
 		-->
 		<VSVersion>2022\Professional</VSVersion>
 		<VSLocation>Program Files</VSLocation>
-		<CLVersion>14.31.31103</CLVersion>
+		<CLVersion>14.32.31326</CLVersion>
 		<DriveLetter>N:</DriveLetter>
 		<KitsVersion>10.0.19041.0</KitsVersion>
 	</PropertyGroup>
@@ -17,6 +17,7 @@
 		<Compile Include="IMyComEvents.cs" />
 		<Compile Include="IMyResult.cs" />
 		<Compile Include="MyResult.cs" />
+		<Compile Include="SomeEnumeration.cs" />
 		<None Include="definitions.idl" />
 		<PackageReference Include="Microsoft.Win32.Registry" Version="5.0.0" />
 		<PackageReference Include="StyleCop.Analyzers.Unstable" Version="1.2.0.321">

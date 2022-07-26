@@ -24,6 +24,8 @@ namespace MyComObject
         internal const string IMyComEventsGuid = "E6FF9DB8-4C0D-457E-8066-C5D6C6E58692";
         internal const string OnAdditionDoneGuid = "6C5C4301-8B6F-4083-9036-B7C4D9827817";
 
+        internal const string EnumGuid = "A28167C4-9E73-47E0-A934-43255D4AACA5";
+
         internal static T Attribute<T>()
             where T : Attribute
         {

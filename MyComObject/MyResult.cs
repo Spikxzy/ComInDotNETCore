@@ -7,7 +7,14 @@
     [ClassInterface(ClassInterfaceType.None)]
     public class MyResult : IMyResult
     {
+        private static double betterResult;
+
         private double result;
+
+        public static void SetResult()
+        {
+            betterResult = 1;
+        }
 
         public MyResult(double value1, double value2)
         {
