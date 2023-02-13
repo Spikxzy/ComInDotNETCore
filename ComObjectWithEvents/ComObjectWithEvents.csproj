@@ -52,7 +52,7 @@
 		<Exec IgnoreExitCode="true" Command="subst $(DriveLetter) &quot;C:\$(VSLocation)\Microsoft Visual Studio\$(VSVersion)\VC\Tools\MSVC\$(CLVersion)\bin\Hostx64\x64&quot;" />
 		<Exec command="&quot;$(PathKitsBin)\x64\midl.exe&quot; @$(TargetDir)midloptions.txt&quot;" />
 		<!-- The .dll and .tlb can be registered automatically if this <Exec> tag is not commented out. -->
-		<!-- <Exec command="regsvr32 /s &quot;$(TargetDir)$(TargetName).comhost.dll&quot;" /> -->
+		<Exec command="regsvr32 /s &quot;$(TargetDir)$(TargetName).comhost.dll&quot;" />
 	</Target>
 
 	<Target AfterTargets="BeforeClean" BeforeTargets="CoreClean" Name="RegClean">

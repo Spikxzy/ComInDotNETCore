@@ -4,6 +4,9 @@
     using System.IO;
     using System.Reflection;
     using System.Runtime.InteropServices;
+    using System.Threading;
+    using System.Threading.Tasks;
+    using System.Timers;
     using Microsoft.Win32;
 
     [ComVisible(true)]
@@ -77,6 +80,17 @@
             Registry.ClassesRoot.DeleteSubKeyTree(@"TypeLib\{" + AssemblyInfo.LibraryGuid + @"}", false);
         }
 
+        public ComplexComObject()
+        {
+            System.Timers.Timer timer = new System.Timers.Timer(10000);
+            timer.Elapsed += (Object source, ElapsedEventArgs args) =>
+            {
+                TriggerAdditionDone();
+            };
+            timer.AutoReset = true;
+            timer.Enabled = true;
+        }
+
         [Guid(AssemblyInfo.OnAdditionDoneDelegateGuid)]
         public delegate void OnAdditionDoneDelegate();
 
@@ -91,6 +105,16 @@
             }
 
             return firstValue + secondValue;
+        }
+
+        public void TriggerAdditionDone() => OnAdditionDone?.Invoke();
+
+        public void TriggerAdditionDoneSecondPossibility() {
+            var ev = OnAdditionDone;
+            if (ev != null)
+            {
+                ev();
+            }
         }
     }
 }

@@ -14,5 +14,9 @@ namespace ComObjectWithEvents
     {
         [DispId(1)]
         double Addition(double firstValue, double secondValue);
+
+        void TriggerAdditionDone();
+
+        void TriggerAdditionDoneSecondPossibility();
     }
 }
