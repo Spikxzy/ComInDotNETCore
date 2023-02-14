@@ -15,6 +15,7 @@
 		<Compile Include="ComplexComObject.cs" />
 		<Compile Include="IComplexComObject.cs" />
 		<Compile Include="ComEvents.cs" />
+		<None Include="COM_Client_Excel.xlsm" />
 		<None Include="definitions.idl" />
 		<PackageReference Include="Microsoft.Win32.Registry" Version="5.0.0" />
 		<PackageReference Include="StyleCop.Analyzers.Unstable" Version="1.2.0.321">
