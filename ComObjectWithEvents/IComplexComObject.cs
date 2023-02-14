@@ -16,7 +16,5 @@ namespace ComObjectWithEvents
         double Addition(double firstValue, double secondValue);
 
         void TriggerAdditionDone();
-
-        void TriggerAdditionDoneSecondPossibility();
     }
 }

@@ -98,23 +98,10 @@
 
         public double Addition(double firstValue, double secondValue)
         {
-            var ev = OnAdditionDone;
-            if (ev != null)
-            {
-                ev();
-            }
-
+            TriggerAdditionDone();
             return firstValue + secondValue;
         }
 
         public void TriggerAdditionDone() => OnAdditionDone?.Invoke();
-
-        public void TriggerAdditionDoneSecondPossibility() {
-            var ev = OnAdditionDone;
-            if (ev != null)
-            {
-                ev();
-            }
-        }
     }
 }

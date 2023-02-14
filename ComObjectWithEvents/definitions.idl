@@ -11,9 +11,6 @@ library ComWithEventsTLB
 
 		[id(2), helpstring("TriggerAdditionDone")]
 		void TriggerAdditionDone();
-
-		[id(3), helpstring("TriggerAdditionDoneSecondPossibility")]
-		void TriggerAdditionDoneSecondPossibility();
 	};
 
 	[uuid(51249E63-A9E2-4713-8EFA-CA8F9C6BFBB7), helpstring("ComEvents")]
